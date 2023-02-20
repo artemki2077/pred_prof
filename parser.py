@@ -39,7 +39,9 @@ def get_data_from_url_js(url: str):
     dom = url[url.rindex('/') + 1:url.rindex('.')]
     r = requests.get(url)
     if r.status_code != 200:
+        print(r.status_code)
         return
+
     soup = BeautifulSoup(r.text, features="html.parser")
     res_data = list(filter(lambda x: x and len(x) >= 3 and 'digit' not in x, map(text_cleaner, soup.get_text('\n').split('\n'))))
     return res_data

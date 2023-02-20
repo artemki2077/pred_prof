@@ -196,14 +196,14 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u041a\u043b\u0430\u0441\u0441\u0435\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0441\u0430\u0439\u0442\u043e\u0432", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u041a\u043b\u0430\u0441\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0441\u0430\u0439\u0442\u043e\u0432", None))
 #if QT_CONFIG(accessibility)
         self.tabWidget.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
@@ -220,8 +220,8 @@ class Ui_MainWindow(object):
         self.plainTextEdit_3.setPlainText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.train_tab), QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435", None))
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0441\u0430\u0439\u0442", None))
-        self.start.setText(QCoreApplication.translate("MainWindow", u"\u043a\u043b\u0430\u0441\u0441\u0435\u0444\u0438\u0446\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0430\u0439\u0442", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.classer_tab), QCoreApplication.translate("MainWindow", u"\u041a\u043b\u0430\u0441\u0441\u0435\u0444\u0438\u043a\u0430\u0446\u0438\u044f", None))
+        self.start.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043b\u0430\u0441\u0441\u0438\u0444\u0438\u0446\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0430\u0439\u0442", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.classer_tab), QCoreApplication.translate("MainWindow", u"\u041a\u043b\u0430\u0441\u0441\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u044f", None))
         self.link_inp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0441\u0441\u044b\u043b\u043a\u0430", None))
         self.get_class.setItemText(0, QCoreApplication.translate("MainWindow", u"\u0430\u0432\u0442\u043e", None))
         self.get_class.setItemText(1, QCoreApplication.translate("MainWindow", u"\u043a\u0443\u043b\u044c\u0442\u0443\u0440\u0430", None))
@@ -233,7 +233,7 @@ class Ui_MainWindow(object):
 
         self.add.setText(QCoreApplication.translate("MainWindow", u"\u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
         self.pushButton_pars.setText(QCoreApplication.translate("MainWindow", u"\u043f\u0430\u0440\u0441\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435", None))
-        self.pushButton_get_file.setText(QCoreApplication.translate("MainWindow", u"\u0432\u044b\u0433\u0440\u0443\u0437\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.pushButton_get_file.setText(QCoreApplication.translate("MainWindow", u"\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.data_tab), QCoreApplication.translate("MainWindow", u"\u0414\u0430\u043d\u043d\u044b\u0435", None))
     # retranslateUi
 

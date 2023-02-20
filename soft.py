@@ -1,6 +1,6 @@
 import json
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from ui_mainwindow import Ui_MainWindow
@@ -16,7 +16,7 @@ import os
 import re
 import pickle
 
-count_gpu = 10
+count_gpu = 20
 main_path = 'data'
 tegs = ['авто', 'культура', 'спорт', 'юмор', 'образование', 'бизнес', 'путешествие']
 
@@ -37,6 +37,10 @@ def add_data(tag, url):
     open('data.csv', 'a').write(f'\n{tag},{url}')
 
 
+def set_data(path):
+    open('data.csv', 'w').write(open(path, 'r').read())
+
+
 def get_data():
     return list(csv.reader(open('data.csv', 'r')))
 
@@ -51,10 +55,15 @@ class MainWindow(QMainWindow):
         self.ui.data_plane_text_2.setPlainText(get_data_str())
         self.ui.add.clicked.connect(self.add)
 
+        if 'data' not in os.listdir():
+            os.mkdir('data')
+
         self.x = []
         self.y = []
         self.tegs_lens = {}
         for teg in tegs:
+            if teg not in os.listdir('data/'):
+                os.mkdir(f'data/{teg}')
             self.tegs_lens[teg] = 0
             for file in os.listdir(f'{main_path}/{teg}'):
                 texts = list(map(lambda x: x.lower().strip(), open(f'{main_path}/{teg}/{file}', 'r', encoding='utf8').readlines()))
@@ -74,7 +83,16 @@ class MainWindow(QMainWindow):
         self.ui.start.clicked.connect(self.get_clas)
         self.ui.train.clicked.connect(self.train)
 
+        self.ui.pushButton_get_file.clicked.connect(self.download)
+
         self.ui.plainTextEdit_3.setPlainText(json.dumps(self.tegs_lens, ensure_ascii=False, indent=4))
+
+    def download(self):
+        fileName, _ = QFileDialog.getOpenFileName(self,
+                                               ("Data csv"), os.getcwd(), ("Image Files (*.csv *.txt)"))
+        print(fileName)
+        set_data(fileName)
+        self.redata()
 
     def get_clas(self):
         with open('model.pkl', 'rb') as f:
@@ -152,7 +170,10 @@ class MainWindow(QMainWindow):
         print('start parsing...')
         with ml.Pool(count_gpu) as p:
             p.map(parser.get_data_from_url_soft, get_data())
-        self.print_plane(self.ui.data_plane_text_1, 'finished)')
+        self.print_plane(self.ui.data_plane_text_1, 'finished parsing...')
+        print('finished parsing...')
+
+        self.redata()
 
 
 if __name__ == "__main__":
